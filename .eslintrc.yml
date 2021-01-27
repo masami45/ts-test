@@ -1,0 +1,100 @@
+env:
+  es2020: true
+  node: true
+extends: 
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/recommended'
+plugins: 
+  - '@typescript-eslint'
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 11
+  project:
+    - 'tsconfig.json'
+ignorePatterns:
+  - "bin/**/*.js"
+rules:
+  # typescript-eslint
+  ## Fixable rules
+  '@typescript-eslint/array-type':
+    - error
+    - default: array-simple
+  '@typescript-eslint/brace-style':
+    - warn
+    - 1tbs
+  '@typescript-eslint/comma-dangle':
+    - warn
+    - never
+  '@typescript-eslint/comma-spacing':
+    - warn
+    - before: false
+      after: true
+  '@typescript-eslint/consistent-type-definitions':
+    - error
+    - interface
+  '@typescript-eslint/func-call-spacing':
+    - warn
+    - never
+  '@typescript-eslint/indent':
+    - error
+    - 2
+    - ignoreComments: true
+      SwitchCase: 1
+  '@typescript-eslint/keyword-spacing':
+    - warn
+    - before: true
+      after: true
+  '@typescript-eslint/lines-between-class-members':
+    - warn
+    - always
+    - exceptAfterSingleLine: true
+  '@typescript-eslint/no-extra-parens':
+    - warn
+    - all
+  '@typescript-eslint/quotes':
+    - error
+    - double
+    - allowTemplateLiterals: true
+      avoidEscape: false
+  '@typescript-eslint/semi':
+    - error
+    - always
+  '@typescript-eslint/space-before-function-paren':
+    - error
+    - never
+  '@typescript-eslint/space-infix-ops':
+    - error
+    - int32Hint: false
+
+  ## Not Fixable Rules
+  '@typescript-eslint/explicit-function-return-type':
+    - error
+  '@typescript-eslint/no-duplicate-imports':
+    - error
+  '@typescript-eslint/no-invalid-this':
+    - error
+    - capIsConstructor: true
+  '@typescript-eslint/no-loop-func':
+    - error
+  '@typescript-eslint/no-throw-literal':
+    - error
+  '@typescript-eslint/no-unused-vars':
+    - warn
+  '@typescript-eslint/no-useless-constructor':
+    - error
+  '@typescript-eslint/prefer-nullish-coalescing':
+    - warn
+  '@typescript-eslint/prefer-optional-chain':
+    - error
+
+  # eslint
+  consistent-return:
+    - error
+  linebreak-style:
+    - error
+    - unix
+  object-curly-spacing:
+    - error
+    - always
+  prefer-const:
+    - off
