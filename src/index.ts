@@ -1,14 +1,10 @@
-class Greeter {
-  greeting: string;
+import { Greeter } from "./Greeter";
 
-  constructor(message: string) {
-    this.greeting = message;
-  }
-
+class greet extends Greeter {
   greet() {
-    console.log(`Hello ${this.greeting}`);
+    console.log(this.greeting);
   }
 }
 
-let greeter = new Greeter("world");
+let greeter = new greet("Hello World!");
 greeter.greet();

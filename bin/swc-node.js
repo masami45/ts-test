@@ -1,10 +1,16 @@
-const path = require("path");
-
 (async function() {
   try {
     const exec = require("./Utils").exec;
+    const path = require("path");
+
+
+    // root path variable
+    const rootPath = "./src";
+
+    // destination path variable
     const dirPath = path.dirname(__dirname);
     const dirName = dirPath.substring(dirPath.lastIndexOf("/") + 1);
+    const destinationPath = `/tmp/${dirName}`;
 
     // Start the compiler
     console.log("[COMPILE] Starting compile command!");
@@ -12,10 +18,14 @@ const path = require("path");
     // Compiling the project
     console.log("[COMPILE] Compile the project using the SWC compiler...");
     let startTime = new Date(); // Start the timer
-    await exec(`swc src -d /tmp/${dirName}`);
+
+    // compiler command
+    await exec(`swc ${rootPath} -d ${destinationPath}`);
+
     let endTime = new Date(); // End the timer
     console.log(`[COMPILE] Finished compiling the project, time to compile: ${msToTime(startTime, endTime)}.\n`);
 
+    // execution the project after compiling success
     await exec(`node /tmp/${dirName}/index.js`);
 
   } catch (error) { // Catch if there is an error from command
