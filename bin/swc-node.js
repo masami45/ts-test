@@ -3,7 +3,6 @@
     const exec = require("./Utils").exec;
     const path = require("path");
 
-
     // root path variable
     const rootPath = "./src";
 
@@ -11,6 +10,7 @@
     const dirPath = path.dirname(__dirname);
     const dirName = dirPath.substring(dirPath.lastIndexOf("/") + 1);
     const destinationPath = `/tmp/${dirName}`;
+    const fileName = process.argv.splice(2).toString();
 
     // Start the compiler
     console.log("[COMPILE] Starting compile command!");
@@ -26,7 +26,7 @@
     console.log(`[COMPILE] Finished compiling the project, time to compile: ${msToTime(startTime, endTime)}.\n`);
 
     // execution the project after compiling success
-    await exec(`node /tmp/${dirName}/index.js`);
+    await exec(`node /tmp/${dirName}/${!fileName.length ? 'index' : fileName}.js`);
 
   } catch (error) { // Catch if there is an error from command
     console.error(error);
